@@ -16,10 +16,21 @@ class DefaultLogoIcon extends Component {
 
   render() {
     const { dark, height, width } = this.props;
+    console.log(dark);
+    console.log(height);
+    console.log(width);
+    console.log(this.props);
+    if (dark)
     return (
-      <img src="https://assets.sospays.com/logo-bw.png" alt="SOSPays"/>
+      <img src="https://assets.sospays.com/logo-bw.png"  width="90px" alt="SOSPays"/>
 
       );
+    else
+      {return (
+        <img src="https://assets.sospays.com/logo.png" width="90px" alt="SOSPays"/>
+
+      );}
+
   }
 }
 
