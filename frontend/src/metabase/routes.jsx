@@ -137,7 +137,7 @@ const IsNotAuthenticated = MetabaseIsSetup(
 );
 
 export const getRoutes = store => (
-  <Route title={t`Metabase`} component={App}>
+  <Route title={t`SOSPays`} component={App}>
     {/* SETUP */}
     <Route
       path="/setup"
@@ -224,7 +224,7 @@ export const getRoutes = store => (
           {/* NEW QUESTION FLOW */}
           <Route
             path="new"
-            title={t`New Question`}
+            title={t`New Order`}
             component={NewQueryOptions}
           />
           <Route path="notebook" component={QueryBuilder} />

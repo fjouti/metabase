@@ -41,7 +41,7 @@ export default class LoginApp extends Component {
             <LogoIcon className="Logo my4 sm-my0" height={65} />
           </div>
           <div className="Login-content Grid-cell p4 bg-white bordered rounded shadowed">
-            <h2 className="Login-header mb2">{t`Sign in to Metabase`}</h2>
+            <h2 className="Login-header mb2">{t`Sign in to SOSPays`}</h2>
             {visibleProviders.length === 1 && visibleProviders[0].Panel ? (
               this.renderPanel(visibleProviders[0])
             ) : (

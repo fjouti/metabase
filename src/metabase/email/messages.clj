@@ -49,15 +49,15 @@
 
 (defn- abandonment-context []
   {:heading      (trs "We’d love your feedback.")
-   :callToAction (str (deferred-trs "It looks like Metabase wasn’t quite a match for you.")
+   :callToAction (str (deferred-trs "It looks like SOSPays wasn’t quite a match for you.")
                       " "
                       (deferred-trs "Would you mind taking a fast 5 question survey to help the Metabase team understand why and make things better in the future?"))
-   :link         "https://metabase.com/feedback/inactive"})
+   :link         "https://sospays.com/feedback/inactive"})
 
 (defn- follow-up-context []
-  {:heading      (trs "We hope you''ve been enjoying Metabase.")
+  {:heading      (trs "We hope you''ve been enjoying SOSPays.")
    :callToAction (trs "Would you mind taking a fast 6 question survey to tell us how it’s going?")
-   :link         "https://metabase.com/feedback/active"})
+   :link         "https://sospays.com/feedback/active"})
 
 
 ;;; ### Public Interface
@@ -77,7 +77,7 @@
                                :logoHeader   true}
                               (random-quote-context)))]
     (email/send-message!
-      :subject      (str "You're invited to join " company "'s Metabase")
+      :subject      (str "You're invited to join SOSPays")
       :recipients   [(:email invited)]
       :message-type :html
       :message      message-body)))
@@ -99,8 +99,8 @@
   (let [recipients (all-admin-recipients)]
     (email/send-message!
       :subject      (str (if google-auth?
-                           (trs "{0} created a Metabase account"     (:common_name new-user))
-                           (trs "{0} accepted their Metabase invite" (:common_name new-user))))
+                           (trs "{0} created an account"     (:common_name new-user))
+                           (trs "{0} accepted their invite" (:common_name new-user))))
       :recipients   recipients
       :message-type :html
       :message      (stencil/render-file "metabase/email/user_joined_notification"
@@ -128,7 +128,7 @@
                         :passwordResetUrl password-reset-url
                         :logoHeader       true})]
     (email/send-message!
-      :subject      (trs "[Metabase] Password Reset Request")
+      :subject      (trs "Password Reset Request")
       :recipients   [email]
       :message-type :html
       :message      message-body)))
@@ -151,7 +151,7 @@
   [model-name->dependencies]
   (for [model-name (sort (keys model-name->dependencies))
         :let       [user-facing-name (if (= model-name "Card")
-                                       "Saved Question"
+                                       "Saved Order"
                                        model-name)]
         deps       (get model-name->dependencies model-name)]
     {:model   user-facing-name
@@ -167,7 +167,7 @@
                             (random-quote-context))
         message-body (stencil/render-file "metabase/email/notification" context)]
     (email/send-message!
-      :subject      (trs "[Metabase] Notification")
+      :subject      (trs "SOSPays Notification")
       :recipients   [email]
       :message-type :html
       :message      message-body)))
@@ -177,8 +177,8 @@
   [email msg-type]
   {:pre [(u/email? email) (contains? #{"abandon" "follow-up"} msg-type)]}
   (let [subject      (str (if (= "abandon" msg-type)
-                            (trs "[Metabase] Help make Metabase better.")
-                            (trs "[Metabase] Tell us how things are going.")))
+                            (trs "Help make SOSPays better.")
+                            (trs "Tell us how things are going.")))
         context      (merge notification-context
                             (random-quote-context)
                             (if (= "abandon" msg-type)
@@ -401,13 +401,13 @@
 (defn send-alert-stopped-because-archived-email!
   "Email to notify users when a card associated to their alert has been archived"
   [alert user {:keys [first_name last_name] :as archiver}]
-  (let [deletion-text (format "the question was archived by %s %s" first_name last_name)]
+  (let [deletion-text (format "the order was archived by %s %s" first_name last_name)]
     (send-email! user not-working-subject stopped-template (assoc (default-alert-context alert) :deletionCause deletion-text))))
 
 (defn send-alert-stopped-because-changed-email!
   "Email to notify users when a card associated to their alert changed in a way that invalidates their alert"
   [alert user {:keys [first_name last_name] :as archiver}]
-  (let [edited-text (format "the question was edited by %s %s" first_name last_name)]
+  (let [edited-text (format "the order was edited by %s %s" first_name last_name)]
     (send-email! user not-working-subject stopped-template (assoc (default-alert-context alert) :deletionCause edited-text))))
 
 (defn send-admin-deleted-your-alert!

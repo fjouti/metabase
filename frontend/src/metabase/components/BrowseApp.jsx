@@ -43,7 +43,7 @@ export class SchemaBrowser extends React.Component {
               <Box>
                 <BrowseHeader
                   crumbs={[
-                    { title: t`Our data`, to: "browse" },
+                    { title: t`Data`, to: "browse" },
                     { title: <Database.Name id={dbId} /> },
                   ]}
                 />

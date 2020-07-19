@@ -24,7 +24,7 @@
    (fn [card-id]
      (if-let [card (db/select-one 'Card :id card-id)]
        card
-       (throw (ex-info (str (deferred-tru "Referenced question #{0} could not be found" (str card-id)))
+       (throw (ex-info (str (deferred-tru "Referenced order #{0} could not be found" (str card-id)))
                        {:card-id card-id}))))
    (query->tag-card-ids query)))
 
@@ -59,7 +59,7 @@
   (let [[from-name to-name] (map :name (db/select ['Card :name] :id [:in [from-card to-card]]))]
     (str
      (deferred-tru "This query has circular referencing sub-queries. ")
-     (deferred-tru "These questions seem to be part of the problem: \"{0}\" and \"{1}\"." from-name to-name))))
+     (deferred-tru "These orders seem to be part of the problem: \"{0}\" and \"{1}\"." from-name to-name))))
 
 (defn- check-for-circular-references!
   [query]

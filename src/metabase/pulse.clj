@@ -110,7 +110,7 @@
     (when-not (and goal-val comparison-col-rowfn)
       (throw (Exception. (str (deferred-tru "Unable to compare results to goal for alert.")
                               " "
-                              (deferred-tru "Question ID is ''{0}'' with visualization settings ''{1}''"
+                              (deferred-tru "Order ID is ''{0}'' with visualization settings ''{1}''"
                                         (get-in results [:card :id])
                                         (pr-str (get-in results [:card :visualization_settings])))))))
     (some (fn [row]
@@ -181,7 +181,7 @@
   [{:keys [id] :as pulse} results {:keys [recipients]}]
   (log/debug (trs "Sending Alert ({0}: {1}) via email" id name))
   (let [condition-kwd    (messages/pulse->alert-condition-kwd pulse)
-        email-subject    (trs "Metabase alert: {0} has {1}"
+        email-subject    (trs "SOSPays alert: {0} has {1}"
                               (first-question-name pulse)
                               (alert-condition-type->description condition-kwd))
         email-recipients (filterv u/email? (map :email recipients))

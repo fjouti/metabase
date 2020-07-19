@@ -11,8 +11,8 @@ export default class QuestionSavedModal extends Component {
   };
 
   render() {
-    return (
-      <ModalContent
+    return true/*(
+      /*<ModalContent
         id="QuestionSavedModal"
         title={t`Saved! Add this to a dashboard?`}
         onClose={this.props.onClose}
@@ -29,6 +29,6 @@ export default class QuestionSavedModal extends Component {
           >{t`Not now`}</button>
         </div>
       </ModalContent>
-    );
+    );*/
   }
 }

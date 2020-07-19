@@ -64,7 +64,7 @@ class CollectionList extends React.Component {
                 {({ highlighted, hovered }) => (
                   <CollectionItem
                     collection={{
-                      name: t`My personal collection`,
+                      name: t`My personal orders`,
                       id: currentUser.personal_collection_id,
                     }}
                     iconName="star"

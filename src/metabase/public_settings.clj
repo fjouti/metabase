@@ -111,19 +111,19 @@
   :visibility :public)
 
 (defsetting enable-public-sharing
-  (deferred-tru "Enable admins to create publicly viewable links (and embeddable iframes) for Questions and Dashboards?")
+  (deferred-tru "Enable admins to create publicly viewable links (and embeddable iframes) for Orders and Dashboards?")
   :type       :boolean
   :default    false
   :visibility :authenticated)
 
 (defsetting enable-embedding
-  (deferred-tru "Allow admins to securely embed questions and dashboards within other applications?")
+  (deferred-tru "Allow admins to securely embed orders and dashboards within other applications?")
   :type       :boolean
   :default    false
   :visibility :authenticated)
 
 (defsetting enable-nested-queries
-  (deferred-tru "Allow using a saved question as the source for other queries?")
+  (deferred-tru "Allow using a saved order as the source for other orders?")
   :type    :boolean
   :default true)
 
@@ -140,7 +140,7 @@
   (* 200 1024))
 
 (defsetting query-caching-max-kb
-  (deferred-tru "The maximum size of the cache, per saved question, in kilobytes:")
+  (deferred-tru "The maximum size of the cache, per saved order, in kilobytes:")
   ;; (This size is a measurement of the length of *uncompressed* serialized result *rows*. The actual size of
   ;; the results as stored will vary somewhat, since this measurement doesn't include metadata returned with the
   ;; results, and doesn't consider whether the results are compressed, as the `:db` backend does.)
@@ -166,12 +166,12 @@
 
 ;; TODO -- this isn't really a TTL at all. Consider renaming to something like `-min-duration`
 (defsetting query-caching-min-ttl
-  (deferred-tru "Metabase will cache all saved questions with an average query execution time longer than this many seconds:")
+  (deferred-tru "Metabase will cache all saved orders with an average query execution time longer than this many seconds:")
   :type    :double
   :default 60)
 
 (defsetting query-caching-ttl-ratio
-  (str (deferred-tru "To determine how long each saved question''s cached result should stick around, we take the query''s average execution time and multiply that by whatever you input here.")
+  (str (deferred-tru "To determine how long each saved order''s cached result should stick around, we take the query''s average execution time and multiply that by whatever you input here.")
        " "
        (deferred-tru "So if a query takes on average 2 minutes to run, and you input 10 for your multiplier, its cache entry will persist for 20 minutes."))
   :type    :integer

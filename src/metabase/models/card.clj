@@ -93,7 +93,7 @@
 
         (ids-already-seen source-card-id)
         (throw
-         (ex-info (tru "Cannot save Question: source query has circular references.")
+         (ex-info (tru "Cannot save Order: source query has circular references.")
            {:status-code 400}))
 
         :else

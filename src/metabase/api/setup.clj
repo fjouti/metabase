@@ -167,7 +167,7 @@
   [_]
   {:title       (tru "Set Slack credentials")
    :group       (tru "Get connected")
-   :description (tru "Does your team use Slack? If so, you can send automated updates via pulses and ask questions with MetaBot.")
+   :description (tru "Does your team use Slack? If so, you can send automated updates via pulses and create orders with MetaBot.")
    :link        "/admin/settings/slack"
    :completed   (slack/slack-configured?)
    :triggered   :always})
@@ -194,9 +194,9 @@
 
 (defmethod admin-checklist-entry :organize-questions
   [_]
-  {:title       (tru "Organize questions")
+  {:title       (tru "Organize orders")
    :group       (tru "Curate your data")
-   :description (tru "Have a lot of saved questions in {0}? Create collections to help manage them and add context." (tru "Metabase"))
+   :description (tru "Have a lot of saved orders in {0}? Create collections to help manage them and add context." (tru "Metabase"))
    :link        "/collection/root"
    :completed   (db/exists? Collection)
    :triggered   (>= (db/count Card) 30)})
@@ -215,7 +215,7 @@
   [_]
   {:title       (tru "Create segments")
    :group       (tru "Curate your data")
-   :description (tru "Keep everyone on the same page by creating canonical sets of filters anyone can use while asking questions.")
+   :description (tru "Keep everyone on the same page by creating canonical sets of filters anyone can use while creating orders.")
    :link        "/admin/datamodel/database"
    :completed   (db/exists? Segment)
    :triggered   (>= (db/count Card) 30)})

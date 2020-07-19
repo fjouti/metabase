@@ -104,7 +104,7 @@ const EXAMPLE_DATE = moment("2018-01-07 17:24");
 
 function getDateStyleOptionsForUnit(
   unit: ?DatetimeUnit,
-  abbreviate?: boolean = false,
+  abbreviate?: boolean,
   separator?: string,
 ) {
   // hour-of-day shouldn't have any date style. It's handled as a time instead.
@@ -156,7 +156,7 @@ function dateStyleOption(
   style: DateStyle,
   unit: ?DatetimeUnit,
   description?: ?string,
-  abbreviate?: boolean = false,
+  abbreviate?: boolean,
   separator?: string,
 ) {
   let format = getDateFormatFromStyle(style, unit, separator);

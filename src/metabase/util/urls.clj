@@ -24,7 +24,7 @@
 (defn card-url
   "Return an appropriate URL for a `Card` with ID.
 
-     (card-url 10) -> \"http://localhost:3000/question/10\""
+     (card-url 10) -> \"http://localhost:3000/order/10\""
   [^Integer id]
   (format "%s/question/%d" (public-settings/site-url) id))
 

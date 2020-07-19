@@ -283,7 +283,7 @@
                      (style/font-style)
                      {:margin-top :8px
                       :color      style/color-gray-4})}
-       (trs "This question has been included as a file attachment")]]}))
+       (trs "This order has been included as a file attachment")]]}))
 
 (s/defmethod render :unknown :- common/RenderedPulseCard
   [_ _ _ _ _]

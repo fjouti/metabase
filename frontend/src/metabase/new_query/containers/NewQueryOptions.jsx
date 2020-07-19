@@ -83,7 +83,7 @@ export default class NewQueryOptions extends Component {
             <GridItem w={ITEM_WIDTHS}>
               <NewQueryOption
                 image="app/img/simple_mode_illustration"
-                title={t`Simple question`}
+                title={t`Simple order`}
                 description={t`Pick some data, view it, and easily filter, summarize, and visualize it.`}
                 width={180}
                 to={Urls.newQuestion()}
@@ -95,7 +95,7 @@ export default class NewQueryOptions extends Component {
             <GridItem w={ITEM_WIDTHS}>
               <NewQueryOption
                 image="app/img/notebook_mode_illustration"
-                title={t`Custom question`}
+                title={t`Custom order`}
                 description={t`Use the advanced notebook editor to join data, create custom columns, do math, and more.`}
                 width={180}
                 to={Urls.newQuestion({ mode: "notebook" })}
@@ -108,7 +108,7 @@ export default class NewQueryOptions extends Component {
               <NewQueryOption
                 image="app/img/sql_illustration"
                 title={t`Native query`}
-                description={t`For more complicated questions, you can write your own SQL or native query.`}
+                description={t`For more complicated orders, you can write your own SQL or native query.`}
                 to={Urls.newQuestion({ type: "native" })}
                 width={180}
                 data-metabase-event={`New Question; Native Query Start`}

@@ -1169,7 +1169,7 @@
 (defmethod automagic-analysis (type Card)
   [card {:keys [cell-query] :as opts}]
   (let [root     (->root card)
-        cell-url (format "%squestion/%s/cell/%s" public-endpoint
+        cell-url (format "%question/%s/cell/%s" public-endpoint
                          (u/get-id card)
                          (encode-base64-json cell-query))]
     (if (table-like? card)

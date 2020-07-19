@@ -217,7 +217,7 @@
       (db/update-where! Card {:id [:in (map :id cards)]}
                         :database_id db-id)
       (doseq [{id :id card-name :name} cards]
-        (log/warnf "Cleaning up orphaned Question '%s', associated to a now deleted database" card-name)
+        (log/warnf "Cleaning up orphaned Orders '%s', associated to a now deleted database" card-name)
         (db/delete! Card :id id)))))
 
 ;; Prior to version 0.28.0 humanization was configured using the boolean setting `enable-advanced-humanization`.
@@ -323,7 +323,7 @@
     ;; 2. Create the new collections.
     (doseq [[model new-collection-name] {Dashboard (trs "Migrated Dashboards")
                                          Pulse     (trs "Migrated Pulses")
-                                         Card      (trs "Migrated Questions")}
+                                         Card      (trs "Migrated Orders")}
             :when                       (db/exists? model :collection_id nil)
             :let                        [new-collection (db/insert! Collection
                                                           :name  new-collection-name

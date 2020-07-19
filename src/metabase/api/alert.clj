@@ -31,7 +31,7 @@
     (hydrate <> :can_write)))
 
 (api/defendpoint GET "/question/:id"
-  "Fetch all questions for the given question (`Card`) id"
+  "Fetch all orders for the given question (`Card`) id"
   [id]
   (-> (if api/*is-superuser?*
         (pulse/retrieve-alerts-for-cards id)
